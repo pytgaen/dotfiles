@@ -1,0 +1,33 @@
+# ~/.zshenv
+# Variables d'environnement globales
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/bin" ] ; then
+    PATH="$HOME/bin:$PATH"
+fi
+
+# set PATH so it includes user's private bin if it exists
+if [ -d "$HOME/.local/bin" ] ; then
+    PATH="$HOME/.local/bin:$PATH"
+fi
+
+if [ -d "/snap/bin" ] ; then
+    PATH="/snap/bin:$PATH"
+fi
+
+# Chemins spécifiques aux outils
+export PATH=${AQUA_ROOT_DIR:-${XDG_DATA_HOME:-$HOME/.local/share}/aquaproj-aqua}/bin:$PATH
+
+if [ -d "$HOME/.modular/bin" ] ; then
+    PATH="$HOME/.modular/bin:$PATH"
+fi
+
+# Configuration Nix
+if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
+    . $HOME/.nix-profile/etc/profile.d/nix.sh
+fi
+
+if [ -e "$HOME/.cargo/env" ] ; then
+    . "$HOME/.cargo/env"
+fi
+

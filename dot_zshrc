@@ -1,0 +1,120 @@
+# Path to your Oh My Zsh installation.
+export ZSH="$HOME/.oh-my-zsh"
+
+# Theme configuration
+ZSH_THEME="robbyrussell"
+
+# Update behavior
+zstyle ':omz:update' mode reminder  # just remind me to update when it's time
+zstyle ':omz:update' frequency 14
+
+# Plugins configuration (delegate to zinit or sheldon)
+# plugins=(
+#     git 
+#     # z 
+#     # zsh-autosuggestions 
+#     # zsh-syntax-highlighting 
+#     docker 
+#     # docker-compose
+#     fzf
+# )
+
+source $ZSH/oh-my-zsh.sh
+
+# History Configuration
+HISTSIZE=10000
+SAVEHIST=10000
+HISTFILE=~/.zsh_history
+
+setopt histignorealldups    # Ignore duplicates in history
+setopt sharehistory         # Share history between sessions
+setopt extended_history     # Record timestamp of command in HISTFILE
+setopt inc_append_history   # Add commands to HISTFILE in order of execution
+setopt hist_expire_dups_first # Delete duplicates first when HISTFILE size exceeds HISTSIZE
+
+# Keybindings
+bindkey -e                  # Use emacs keybindings
+bindkey '^R' history-incremental-pattern-search-backward
+
+# Completion configuration
+autoload -U compinit && compinit
+zstyle ':completion:*' menu select
+
+# Environment variables
+export BROWSER="wslview"
+export DISPLAY="x"
+export EDITOR='nvim'        # Uncomment if you use neovim
+export VISUAL="$EDITOR"
+
+# Aliases
+alias cb="snap run clipboard"
+alias ll="ls -lah"
+alias zshconfig="$EDITOR ~/.zshrc"
+alias reload="source ~/.zshrc"
+alias update="sudo apt update && sudo apt upgrade"
+
+alias load_dotenv="eval \"\$(shdotenv)\""
+alias load_dotenv_over="eval \"\$(shdotenv --overload)\""
+alias ze='zellij'
+alias cb="snap run clipboard"
+
+# ### Added by Zinit's installer
+# if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+#     print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+#     command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+#     command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+#         print -P "%F{33} %F{34}Installation successful.%f%b" || \
+#         print -P "%F{160} The clone has failed.%f%b"
+# fi
+
+# source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+# autoload -Uz _zinit
+# (( ${+_comps} )) && _comps[zinit]=_zinit
+
+# # Load a few important annexes, without Turbo
+# # (this is currently required for annexes)
+# zinit light-mode for \
+#     zdharma-continuum/zinit-annex-as-monitor \
+#     zdharma-continuum/zinit-annex-bin-gem-node \
+#     zdharma-continuum/zinit-annex-patch-dl \
+#     zdharma-continuum/zinit-annex-rust
+
+# ### End of Zinit's installer chunk
+
+# zinit for \
+#     OMZP::git \
+#     OMZP::docker \
+#     OMZP::fzf
+
+# zinit wait lucid for \
+#   zdharma-continuum/fast-syntax-highlighting \
+#   zsh-users/zsh-autosuggestions \
+#   zsh-users/zsh-completions \
+#   zdharma-continuum/history-search-multi-word
+
+# ~/.zshrc or ~/.bashrc
+
+eval "$(sheldon source)"
+
+# Tools initialization
+# Mise (version manager)
+eval "$(/home/gaetan/.local/bin/mise activate zsh)"
+
+# Task completion
+eval "$(task --completion zsh)"
+
+# FZF configuration
+eval "$(fzf --zsh)"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+
+# Theme (Oh My Posh)
+eval "$(oh-my-posh init zsh --config /home/gaetan/.cache/oh-my-posh/themes/powerlevel10k_rainbow.omp.json)"
+
+eval "$(zoxide init zsh)"
+eval "$(uv generate-shell-completion zsh)"
+# eval "$(pkgx --shell-completion zsh)"
+
+source /home/gaetan/.config/broot/launcher/bash/br
+
+# Local customizations - if you want to add machine-specific configurations
+[[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
