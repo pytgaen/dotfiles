@@ -104,13 +104,13 @@ eval "$(/home/gaetan/.local/bin/mise activate zsh)"
 eval "$(task --completion zsh)"
 
 # FZF configuration
-eval "$(fzf --zsh)"
+# eval "$(fzf --zsh)"
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 # Theme (Oh My Posh)
 eval "$(oh-my-posh init zsh --config /home/gaetan/.cache/oh-my-posh/themes/powerlevel10k_rainbow.omp.json)"
 
-eval "$(zoxide init zsh)"
+# eval "$(zoxide init zsh)"
 eval "$(uv generate-shell-completion zsh)"
 # eval "$(pkgx --shell-completion zsh)"
 
