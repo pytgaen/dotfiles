@@ -40,6 +40,9 @@ bindkey '^R' history-incremental-pattern-search-backward
 autoload -U compinit && compinit
 zstyle ':completion:*' menu select
 
+# Optimize copy/paste
+zle_highlight+=(paste:none)
+
 # Environment variables
 export BROWSER="wslview"
 export DISPLAY="x"
