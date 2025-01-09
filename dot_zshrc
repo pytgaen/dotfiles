@@ -27,7 +27,7 @@ setopt sharehistory            # Share history between sessions
 
 # Keybindings
 bindkey -e                  # Use emacs keybindings
-bindkey '^R' history-incremental-pattern-search-backward
+# bindkey '^R' history-incremental-pattern-search-backward
 
 # Completion configuration
 autoload -U compinit && compinit

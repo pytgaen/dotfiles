@@ -19,6 +19,37 @@ shell = "zsh"
 # [plugins.base16]
 # github = "chriskempson/base16-shell"
 
+[plugins.oh-my-zsh-git]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/git"
+
+[plugins.zsh-autosuggestions]
+github = "zsh-users/zsh-autosuggestions"
+
+[plugins.zsh-completions]
+github = "zsh-users/zsh-completions"
+
+# [plugins.history-search-multi-word]
+# github = "zdharma-continuum/history-search-multi-word"
+
+[plugins.chezmoi]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/chezmoi"
+
+[plugins.oh-my-zsh-docker]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/docker"
+
+[plugins.zoxide]
+github = "ajeetdsouza/zoxide"
+use = ["zoxide.plugin.zsh"]
+apply = ["source"]
+# inline = 'eval "$(zoxide init zsh)"'
+
+[plugins.sudo]
+github = "ohmyzsh/ohmyzsh"
+dir = "plugins/sudo"
+
 [plugins.fzf]
 github = "junegunn/fzf"
 use = ["shell/*.zsh"]
@@ -33,40 +64,6 @@ apply = ["source"]
 [plugins.oh-my-zsh-fzf]
 github = "ohmyzsh/ohmyzsh"
 dir = "plugins/fzf"
-
-[plugins.chezmoi]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/chezmoi"
-
-[plugins.sudo]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/sudo"
-
-# [plugins.fast-syntax-highlighting]
-# github = "zdharma-continuum/fast-syntax-highlighting"
-
-[plugins.zsh-autosuggestions]
-github = "zsh-users/zsh-autosuggestions"
-
-[plugins.zsh-completions]
-github = "zsh-users/zsh-completions"
-
-[plugins.history-search-multi-word]
-github = "zdharma-continuum/history-search-multi-word"
-
-[plugins.oh-my-zsh-git]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/git"
-
-[plugins.oh-my-zsh-docker]
-github = "ohmyzsh/ohmyzsh"
-dir = "plugins/docker"
-
-[plugins.zoxide]
-github = "ajeetdsouza/zoxide"
-use = ["zoxide.plugin.zsh"]
-apply = ["source"]
-# inline = 'eval "$(zoxide init zsh)"'
 
 [plugins.zsh-syntax-highlighting]
 github = "zsh-users/zsh-syntax-highlighting"
