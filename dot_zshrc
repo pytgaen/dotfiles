@@ -79,3 +79,8 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 # Local customizations - if you want to add machine-specific configurations
 [[ -f ~/.zshrc.local ]] && source ~/.zshrc.local
+
+# bun completions
+[ -s "/home/gaetan/.bun/_bun" ] && source "/home/gaetan/.bun/_bun"
+
+export PATH="$PATH:/home/gaetan/.modular/bin"
