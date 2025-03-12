@@ -38,4 +38,4 @@ fi
 # Configuration Nix
 if [ -e $HOME/.nix-profile/etc/profile.d/nix.sh ]; then 
     . $HOME/.nix-profile/etc/profile.d/nix.sh
-fi
+fi # added by Nix installer
