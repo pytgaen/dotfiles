@@ -8,32 +8,32 @@
 #   - all
 registries:
 - type: standard
-  ref: v4.326.1 # renovate: depName=aquaproj/aqua-registry
+  ref: v4.346.1 # renovate: depName=aquaproj/aqua-registry
 packages:
 - name: ajeetdsouza/zoxide@v0.9.7
-- name: aquasecurity/trivy@v0.60.0
-- name: bootandy/dust@v1.1.2
+- name: aquasecurity/trivy@v0.61.1
+- name: bootandy/dust@v1.2.0
 - name: BurntSushi/ripgrep@14.1.1
 - name: go-task/task@v3.42.1
 - name: helix-editor/helix@25.01.1
-- name: junegunn/fzf@v0.60.3
+- name: junegunn/fzf@v0.61.1
 - name: lsd-rs/lsd@v1.1.5
 - name: mvdan/sh@v3.11.0
 - name: sharkdp/bat@v0.25.0
 - name: sharkdp/fd@v10.2.0
 - name: sharkdp/hexyl@v0.16.0
-- name: zellij-org/zellij@v0.41.2
+- name: zellij-org/zellij@v0.42.2
 - name: sharkdp/diskus@v0.8.0
-- name: nushell/nushell@0.102.0
-- name: eza-community/eza@v0.20.23
-- name: tldr-pages/tlrc@v1.10.0
-- name: twpayne/chezmoi@v2.60.1
-- name: sxyazi/yazi@v25.3.2
-- name: Lifailon/lazyjournal@0.7.5
+- name: nushell/nushell@0.103.0
+- name: eza-community/eza@v0.21.0
+- name: tldr-pages/tlrc@v1.11.0
+- name: twpayne/chezmoi@v2.62.2
+- name: sxyazi/yazi@v25.4.8
+- name: Lifailon/lazyjournal@0.7.8
 - name: chaqchase/lla@v0.3.10
 - name: pomdtr/sunbeam@v1.0.1
 - name: shenwei356/rush@v0.6.1
-- name: evilmartians/lefthook@v1.11.3
-- name: dagu-org/dagu@v1.16.4
-- name: alajmo/mani@v0.30.0
-- name: jesseduffield/lazygit@v0.48.0
+- name: evilmartians/lefthook@v1.11.10
+- name: dagu-org/dagu@v1.16.7
+- name: alajmo/mani@v0.30.1
+- name: jesseduffield/lazygit@v0.49.0
