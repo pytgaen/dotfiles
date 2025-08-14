@@ -3,7 +3,7 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # Theme configuration
 # ZSH_THEME="robbyrussell", "wezm", "cloud"
-ZSH_THEME="agnoster"
+# ZSH_THEME="agnoster"
 
 # Update behavior
 zstyle ':omz:update' mode reminder  # just remind me to update when it's time
@@ -52,6 +52,9 @@ alias cb="snap run clipboard"
 alias load_dotenv="eval \"\$(shdotenv)\""
 alias load_dotenv_over="eval \"\$(shdotenv --overload)\""
 
+alias disable_ohmypo="touch ~/.disable_oh_my_posh && exec zsh"
+alias enable_ohmypo="rm -f ~/.disable_oh_my_posh && exec zsh"
+
 # Use sheldon to load zsh plugins
 [[ -x "$(command -v sheldon)" ]] && eval "$(sheldon source)"
 
@@ -61,7 +64,7 @@ zle_highlight+=(paste:none)
 # Tools initialization
 
 # Mise (version manager)
-[[ -x "$(command -v mise)" ]] &&  eval "$(~/.local/bin/mise activate zsh)"
+# [[ -x "$(command -v mise)" ]] &&  eval "$(~/.local/bin/mise activate zsh)"
 
 # Task completion
 [[ -x "$(command -v task)" ]] && eval "$(task --completion zsh)"
@@ -70,9 +73,20 @@ zle_highlight+=(paste:none)
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 # Theme (Oh My Posh)
-[[ -x "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init zsh --config /home/gaetan/.cache/oh-my-posh/themes/powerlevel10k_rainbow.omp.json)"
+if [[ ! -f ~/.disable_oh_my_posh ]]; then
+  [[ -x "$(command -v oh-my-posh)" ]] && eval "$(oh-my-posh init zsh --config /home/gaetan/.cache/oh-my-posh/themes/powerlevel10k_rainbow.omp.json)"
+else
+  ZSH_THEME="robbyrussell"
+  # ZSH_THEME="agnoster"
+  source $ZSH/themes/$ZSH_THEME.zsh-theme
+  # source $ZSH/oh-my-zsh.sh
+  # autoload -U promptinit && promptinit
+  # prompt walters 
+fi
 
 [[ -x "$(command -v uv)" ]] && eval "$(uv generate-shell-completion zsh)"
+[[ -x "$(command -v jj)" ]] && source <(jj util completion zsh)
+
 # eval "$(pkgx --shell-completion zsh)"
 
 [[ -f $HOME/.config/broot/launcher/bash/br ]] && source $HOME/.config/broot/launcher/bash/br
@@ -83,4 +97,22 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 # bun completions
 [ -s "/home/gaetan/.bun/_bun" ] && source "/home/gaetan/.bun/_bun"
 
+# jujutsu
+[[ -x "$(command -v jj)" ]] && source <(jj util completion zsh)
+
 export PATH="$PATH:/home/gaetan/.modular/bin"
+
+. "$HOME/.atuin/bin/env"
+
+# eval "$(atuin init zsh)"
+eval "$(atuin init zsh --disable-up-arrow)"
+
+
+source /home/gaetan/.config/broot/launcher/bash/br
+
+# fnm
+FNM_PATH="/home/gaetan/.local/share/fnm"
+if [ -d "$FNM_PATH" ]; then
+  export PATH="$FNM_PATH:$PATH"
+  eval "$(fnm env)"
+fi
