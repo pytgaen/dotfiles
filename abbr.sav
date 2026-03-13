@@ -1,0 +1,6 @@
+"doge"="eval "$(uvx git+https://gitlab.com/pytgaen-group/dotenv-fusion fuse --load)""
+"dole"="eval "$(uvx git+https://gitlab.com/pytgaen-group/dotenv-fusion load)""
+"git-undo"="git tag "backup-$(date +%Y%m%d_%H%M%S)" && git reset --soft HEAD~1"
+"ldo"="load_dotenv"
+"lssh"="lazyssh"
+"ub-up"="sudo apt-get update && sudo apt-get upgrade"

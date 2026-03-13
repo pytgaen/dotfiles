@@ -70,7 +70,7 @@ zle_highlight+=(paste:none)
 [[ -x "$(command -v task)" ]] && eval "$(task --completion zsh)"
 
 # FZF configuration
-export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
+# export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border"
 
 # Theme (Oh My Posh)
 if [[ ! -f ~/.disable_oh_my_posh ]]; then
@@ -89,6 +89,8 @@ fi
 
 # eval "$(pkgx --shell-completion zsh)"
 
+export AQUA_CONFIG="$HOME/aqua.yaml"
+
 [[ -f $HOME/.config/broot/launcher/bash/br ]] && source $HOME/.config/broot/launcher/bash/br
 
 # Local customizations - if you want to add machine-specific configurations
@@ -100,13 +102,18 @@ fi
 # jujutsu
 [[ -x "$(command -v jj)" ]] && source <(jj util completion zsh)
 
+# television (fzf alternative)
+[[ -x "$(command -v tv)" ]] && eval "$(tv init zsh)"
+
+# autin
+[[ -x "$(command -v atuin)" ]] && source <(atuin gen-completions --shell zsh)
+
 export PATH="$PATH:/home/gaetan/.modular/bin"
 
 . "$HOME/.atuin/bin/env"
 
 # eval "$(atuin init zsh)"
 eval "$(atuin init zsh --disable-up-arrow)"
-
 
 source /home/gaetan/.config/broot/launcher/bash/br
 
@@ -115,4 +122,30 @@ FNM_PATH="/home/gaetan/.local/share/fnm"
 if [ -d "$FNM_PATH" ]; then
   export PATH="$FNM_PATH:$PATH"
   eval "$(fnm env)"
+fi
+
+# pnpm
+export PNPM_HOME="/home/gaetan/.local/share/pnpm"
+case ":$PATH:" in
+  *":$PNPM_HOME:"*) ;;
+  *) export PATH="$PNPM_HOME:$PATH" ;;
+esac
+# pnpm end
+
+# opencode
+export PATH=/home/gaetan/.opencode/bin:$PATH
+
+eval "$(/home/gaetan/.local/bin/mise activate zsh)"
+
+alias claude-mem='bun "/home/gaetan/.claude/plugins/marketplaces/thedotmack/plugin/scripts/worker-service.cjs"'
+
+if [ -f ~/.zshrc.local ]; then
+  source ~/.zshrc.local
+fi
+
+if command -v wt >/dev/null 2>&1; then eval "$(command wt config shell init zsh)"; fi
+
+# if [[ -o interactive ]] && [[ -z "$TMUX" ]]; then
+if [[ -o interactive ]] && [[ -z "$TMUX" ]] && [[ -n "$SSH_CONNECTION" ]]; then
+    tmux attach-session -t principal || tmux new-session -s principal
 fi
