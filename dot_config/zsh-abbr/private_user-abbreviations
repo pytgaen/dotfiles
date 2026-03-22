@@ -1,0 +1,5 @@
+abbr "doge"="eval \"\$(uvx dotenv-fusion fuse --load)\""
+abbr "dole"="eval \"\$(uvx dotenv-fusion load)\""
+abbr "git-undo"="git tag \"backup-\$(date +%Y%m%d_%H%M%S)\" && git reset --soft HEAD~1"
+abbr "lssh"="lazyssh"
+abbr "ub-up"="sudo apt-get update && sudo apt-get upgrade"
